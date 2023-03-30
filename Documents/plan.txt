@@ -1,5 +1,6 @@
 1. Try Except
-2. File Operations
-3. Object Oriented Programming
-4. Environments & Modules & Packages
-5. SQL Operations
+2. Fonksiyonlar ileri düzey
+3. File Operations
+4. Object Oriented Programming
+5. Environments & Modules & Packages
+6. SQL Operations
