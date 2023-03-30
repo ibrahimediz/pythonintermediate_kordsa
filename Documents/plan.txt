@@ -3,4 +3,4 @@
 3. File Operations
 4. Object Oriented Programming
 5. Environments & Modules & Packages
-6. SQL Operations
+6. SQL Operations,Qt,Flask
