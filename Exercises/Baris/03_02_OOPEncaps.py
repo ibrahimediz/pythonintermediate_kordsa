@@ -1,4 +1,20 @@
 
-        Bir galeri için tasarlanan bir yazılım içerisinde arabalar bir sınıf üzerinden nesne üretilerek kaydedilmek istenmektedir.
-        En az üç örnek özelliği olan (instance attribute ) bir araba sınıfı tasarlayınız
+     
+
+class Car:
+    classAttribute = ""
+    def __init__(self,brand,model,year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        
+
+    def getBrand(self):
+        print(self.brand)
+
+    def getModel(self):
+        print(self.model)
+
+    def getYear(self):
+        print(self.year)       
         
