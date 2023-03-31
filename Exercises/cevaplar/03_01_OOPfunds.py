@@ -1,8 +1,8 @@
 class Dog:
     classAttribute = "Canis lupus familiaris"
-    def __init__(self,name,spiece,age,gender):
+    def __init__(self,name,specie,age,gender):
         self.name = name
-        self.spiece = spiece
+        self.specie = specie
         self.age = age
         self.gender = gender
 
