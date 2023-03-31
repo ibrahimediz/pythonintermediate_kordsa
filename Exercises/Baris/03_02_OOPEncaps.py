@@ -17,4 +17,3 @@ class Car:
 
     def getYear(self):
         print(self.year)       
-        
