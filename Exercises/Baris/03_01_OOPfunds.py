@@ -16,3 +16,4 @@ cat1 =Cat("Boncuk","Tekir","3","Female")
 cat2 =Cat("Paşa","Scottish","3","Male")      
 
 cat1.sayMyName()
+cat2.sayMyName()
