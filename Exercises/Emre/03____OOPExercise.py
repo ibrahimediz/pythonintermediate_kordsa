@@ -64,7 +64,16 @@ class DCHero(Hero):
 
 class TurkishHero(Hero):
     def __init__(self, name, power, health):
-        super().
+        super().__init__(name, power, health)
+        self.supPower = 0
+
+    def hit(self):
+        self.supPower += 1
+        if self.supPower == rnd.randint(5, 10):
+            self.supPower == 0
+            print(f"{self.name} Sağlam vurdu")
+            return self.power * 4
+        return self.power
 
 
 
@@ -91,26 +100,52 @@ class Batman(DCHero):
 class Flash(DCHero):
     def __init__(self):
         super().__init__("Flash",90, 1000)
+    
+class BattalGazi(TurkishHero):
+    def __init__(self):
+        super().__init__("Battal Gazi",100, 1250)
+
+class KaraMurat(TurkishHero):
+    def __init__(self):
+        super().__init__("Kara Murat",90, 1450)
+
+class Tarkan(TurkishHero):
+    def __init__(self):
+        super().__init__("Tarkan",150, 850)
 
 marvelHeroList = [DeadPool,Hulk,IronMan]
 dcHeroList = [SuperMan,Batman,Flash]
-
+turkishHeroList = [BattalGazi,KaraMurat,Tarkan]
+charList = [marvelHeroList,dcHeroList,turkishHeroList]
 # print(rnd.choice(marvelHeroList))
 
-P1 = rnd.choice(marvelHeroList)()
-P2 = rnd.choice(dcHeroList)()
-while P1.health >0 and P2.health > 0:
+P1 = rnd.choice(rnd.choice(charList))()
+P2 = rnd.choice(rnd.choice(charList))()
+print(f"P1 için {P1.name} seçildi")
+print(f"P2 için {P2.name} seçildi")
+P3 = rnd.choice(turkishHeroList)()
+while P1.health >0 and P2.health > 0 and P3.health >0 :
     time.sleep(1)
+    P1.impact(P3.hit())
     P2.impact(P1.hit())
     P1.impact(P2.hit())
+    P2.impact(P3.hit())
+    P3.impact(P1.hit())
+    P3.impact(P2.hit())
     print(P1.status())
     print(P2.status())
+    print(P3.status())
 else:
-    if P1.health > P2.health:
-        print(f"{P1.name} Wins")
-    elif P1.health < P2.health:
-        print(f"{P2.name} Wins")
-    else:
-        print("Tie")
+    if P1.health or P2.health or P3.health == 0:
+        print("Game Over")
+        if P1.health > P2.health and P1.health > P3.health:
+            print(f"{P1.name} Wins")
+        elif P2.health > P1.health and P2.health > P3.health:
+            print(f"{P2.name} Wins")
+        elif P3.health > P2.health and P3.health > P1.health:
+            print(f"{P3.name} Wins")
+        ### Eşitlik durumları yazılabilir.
+        else:
+            print("Tie")
 
         

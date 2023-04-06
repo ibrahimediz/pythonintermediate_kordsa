@@ -62,6 +62,21 @@ class DCHero(Hero):
             return self.power * 2
         return self.power
 
+class TurkishHero(Hero):
+    def __init__(self, name, power, health):
+        super().__init__(name, power, health)
+        self.supPower = 0
+
+#Her darbe yediğinde karşı rakibe vurduğu darbenin %25'i kadar geri vuruyor.
+
+    def crossAttack(self):
+        self.supPower += 1
+        if self.supPower == rnd.randint(5, 10):
+            self.supPower = 0
+            print(f"{self.name} Süper Güç Kullandı")
+            return self.power * 2
+        return self.power
+
 class DeadPool(MarvelHero):
     def __init__(self):
         super().__init__("DeadPool",100,1000)

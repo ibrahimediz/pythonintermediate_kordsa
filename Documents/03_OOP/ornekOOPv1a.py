@@ -14,8 +14,9 @@ class Hero:
     def impact3(self,power):
         self.health -= power
 
-    def impact(self,power):
-        rnd.choice((self.impact1,self.impact2,self.impact3))(power)
+    def impact(self,obj):
+        rnd.choice((self.impact1,self.impact2,self.impact3))(obj.power)
+        obj.health -= self.power//2
     
     def hit1(self):
         return self.power//2
@@ -35,12 +36,12 @@ class MarvelHero(Hero):
         super().__init__(name, power, health)
         self.supPower = 0
 
-    def impact(self, power):
-        super().impact(power)
+    def impact(self, obj):
+        super().impact(obj)
         self.supPower += 1
         if self.supPower == rnd.randint(5, 10):
             print(f"{self.name} Süper Güç Kullandı")
-            self.health += power
+            self.health += obj.power
             self.supPower = 0
 
 
@@ -55,6 +56,19 @@ class DCHero(Hero):
             self.supPower = 0
             print(f"{self.name} Süper Güç Kullandı")
             return self.power * 2
+        return self.power
+
+class TurkishHero(Hero):
+    def __init__(self, name, power, health):
+        super().__init__(name, power, health)
+        self.supPower = 0
+
+    def hit(self):
+        self.supPower += 1
+        if self.supPower == rnd.randint(5, 10):
+            self.supPower == 0
+            print(f"{self.name} Sağlam vurdu")
+            return self.power * 4
         return self.power
 
 class DeadPool(MarvelHero):
@@ -81,17 +95,36 @@ class Flash(DCHero):
     def __init__(self):
         super().__init__("Flash",90, 1000)
 
+    
+class BattalGazi(TurkishHero):
+    def __init__(self):
+        super().__init__("Battal Gazi",100, 1250)
+
+class KaraMurat(TurkishHero):
+    def __init__(self):
+        super().__init__("Kara Murat",90, 1450)
+
+class Tarkan(TurkishHero):
+    def __init__(self):
+        super().__init__("Tarkan",150, 850)
+
 marvelHeroList = [DeadPool,Hulk,IronMan]
 dcHeroList = [SuperMan,Batman,Flash]
+turkishHeroList = [BattalGazi,KaraMurat,Tarkan]
+charList = [marvelHeroList,dcHeroList,turkishHeroList]
+# print(rnd.choice(marvelHeroList))
+
+P1 = rnd.choice(rnd.choice(charList))()
+P2 = rnd.choice(rnd.choice(charList))()
+print(f"P1 için {P1.name} seçildi")
+print(f"P2 için {P2.name} seçildi")
 
 # print(rnd.choice(marvelHeroList))
 
-P1 = rnd.choice(marvelHeroList)()
-P2 = rnd.choice(dcHeroList)()
 while P1.health >0 and P2.health > 0:
     time.sleep(1)
-    P2.impact(P1.hit())
-    P1.impact(P2.hit())
+    P2.impact(P1)
+    P1.impact(P2)
     print(P1.status())
     print(P2.status())
 else:
