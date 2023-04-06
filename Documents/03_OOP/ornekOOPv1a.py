@@ -15,7 +15,7 @@ class Hero:
         self.health -= power
 
     def impact(self,obj):
-        rnd.choice((self.impact1,self.impact2,self.impact3))(obj.power)
+        rnd.choice((self.impact1,self.impact2,self.impact3))(obj.hit())
         obj.health -= self.power//2
     
     def hit1(self):
