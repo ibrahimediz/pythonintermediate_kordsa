@@ -6,6 +6,6 @@
 * aktif hale getirmek için `env\Scripts\activate`
 
 #####################################
-* kurulu olan kütüphanelerin listesini almak için `pip freeze > requirements.txt`
+* kurulu olan kütüphanelerin listesini almak için `pip freeze > requirements.txt`<br>
 #####################################
 * kütüphaneden kurulum yapmak için `pip install -r requirements.txt`
