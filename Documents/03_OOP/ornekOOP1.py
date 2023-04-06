@@ -1,13 +1,3 @@
-import os
-liste = os.listdir("Exercises/")
-fileName = "03____OOPExercise"
-for item in liste:
-    with open(f"Exercises/{item}/{fileName}.py","w+") as dosya:
-        dosya.write("""
-
-# aaaaa.jpg dosyası içindeki yapıyı dikkate alarak TurkishHero classını ve alt classlarını oluşturunuz 
-# OOP hiyerarşisini python programlama dili ile yazınız
-
 import random as rnd
 import time
 
@@ -17,25 +7,11 @@ class Hero:
         self.power = power
         self.health = health
 
-    def impact1(self,power):
-        self.health -= power//2
-    def impact2(self,power):
-        self.health -= power//3
-    def impact3(self,power):
-        self.health -= power
-
     def impact(self,power):
-        rnd.choice((self.impact1,self.impact2,self.impact3))(power)
+        self.health -= power
     
-    def hit1(self):
-        return self.power//2
-    def hit2(self):
-        return self.power//3
-    def hit3(self):
-        return self.power
-
     def hit(self):
-        return rnd.choice((self.hit1,self.hit2,self.hit3))()
+        return self.power
 
     def status(self):
         return f"{self.name} {self.health}"
@@ -48,9 +24,8 @@ class MarvelHero(Hero):
     def impact(self, power):
         super().impact(power)
         self.supPower += 1
-        if self.supPower == rnd.randint(5, 10):
-            print(f"{self.name} Süper Güç Kullandı")
-            self.health += power
+        if self.supPower == 5:
+            self.health += 100
             self.supPower = 0
 
 
@@ -61,9 +36,8 @@ class DCHero(Hero):
 
     def hit(self):
         self.supPower += 1
-        if self.supPower == rnd.randint(5, 10):
+        if self.supPower == 5:
             self.supPower = 0
-            print(f"{self.name} Süper Güç Kullandı")
             return self.power * 2
         return self.power
 
@@ -111,5 +85,3 @@ else:
         print(f"{P2.name} Wins")
     else:
         print("Tie")
-
-        """)

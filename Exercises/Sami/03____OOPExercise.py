@@ -1,9 +1,4 @@
-import os
-liste = os.listdir("Exercises/")
-fileName = "03____OOPExercise"
-for item in liste:
-    with open(f"Exercises/{item}/{fileName}.py","w+") as dosya:
-        dosya.write("""
+
 
 # aaaaa.jpg dosyası içindeki yapıyı dikkate alarak TurkishHero classını ve alt classlarını oluşturunuz 
 # OOP hiyerarşisini python programlama dili ile yazınız
@@ -112,4 +107,4 @@ else:
     else:
         print("Tie")
 
-        """)
+        
