@@ -4,7 +4,7 @@
 # Windows için
 * oluşturmak için  `python -m venv env`
 * aktif hale getirmek için `env\Scripts\activate`
-
+<br>
 #####################################
 * kurulu olan kütüphanelerin listesini almak için `pip freeze > requirements.txt`<br>
 #####################################
