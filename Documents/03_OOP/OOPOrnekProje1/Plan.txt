@@ -1,0 +1,5 @@
+1. Onaylama
+2. Görüntüleme
+3. Arama
+4. Silme
+5. Güncelleme
